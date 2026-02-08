@@ -1,0 +1,8 @@
+Metadata-Version: 2.4
+Name: swift_address_structuring_resources
+Version: 1.0.0
+Summary: Resource files for ISO Address Structuring Package
+License-File: LICENSE.txt
+License-File: LICENSE.pdf
+License-File: NOTICES.txt
+Dynamic: license-file
