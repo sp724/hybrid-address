@@ -1,0 +1,1234 @@
+{
+  "total_addresses_tested": 7,
+  "comparisons": [
+    {
+      "address": "1600 Pennsylvania Ave NW\nWashington, DC 20500\nUSA",
+      "stage_1_only": {
+        "stage": "CRF Only (Stage 1)",
+        "predictions": {
+          "INTEGER": [
+            {
+              "text": "1600",
+              "confidence": 0.9915655255317688,
+              "span": [
+                0,
+                4
+              ]
+            }
+          ],
+          "SEPARATOR": [
+            {
+              "text": " ",
+              "confidence": 0.9707738161087036,
+              "span": [
+                39,
+                40
+              ]
+            },
+            {
+              "text": "\n",
+              "confidence": 0.9965927004814148,
+              "span": [
+                45,
+                46
+              ]
+            },
+            {
+              "text": " ",
+              "confidence": 0.985110342502594,
+              "span": [
+                4,
+                5
+              ]
+            },
+            {
+              "text": " ",
+              "confidence": 0.8917388319969177,
+              "span": [
+                21,
+                22
+              ]
+            },
+            {
+              "text": "\n",
+              "confidence": 0.9909239411354065,
+              "span": [
+                24,
+                25
+              ]
+            }
+          ],
+          "STREET": [
+            {
+              "text": "PENNSYLVANIA AVE",
+              "confidence": 0.8674353361129761,
+              "span": [
+                5,
+                21
+              ]
+            }
+          ],
+          "BUSINESS_ENTITY_TYPE": [
+            {
+              "text": "NW",
+              "confidence": 0.44080203771591187,
+              "span": [
+                22,
+                24
+              ]
+            }
+          ],
+          "TOWN": [
+            {
+              "text": "WASHINGTON, DC",
+              "confidence": 0.94888836145401,
+              "span": [
+                25,
+                39
+              ]
+            }
+          ],
+          "POSTAL_CODE": [
+            {
+              "text": "20500",
+              "confidence": 0.976760745048523,
+              "span": [
+                40,
+                45
+              ]
+            }
+          ],
+          "COUNTRY": [
+            {
+              "text": "USA",
+              "confidence": 0.9921340942382812,
+              "span": [
+                46,
+                49
+              ]
+            }
+          ],
+          "OTHER": [],
+          "CONTINENT": [],
+          "GENERIC_WORD": [],
+          "NATURAL_PERSON_NAME": [],
+          "FINANCIAL_INSTITUTION": [],
+          "BUSINESS_ENTITY_NAME": [],
+          "MONTH": [],
+          "YEAR": [],
+          "IBAN": [],
+          "FLOAT": [],
+          "ALPHANUMERIC": [],
+          "CURRENCY": [],
+          "FINANCIAL_JARGON": [],
+          "HOUSE_NUMBER": [],
+          "DATE": [],
+          "SPECIFIER": [],
+          "PHONE_NUMBER": []
+        },
+        "raw_output": {
+          "COUNTRY_predictions": [
+            "USA"
+          ],
+          "TOWN_predictions": [
+            "WASHINGTON, DC"
+          ],
+          "POSTAL_CODE_predictions": [
+            "20500"
+          ]
+        }
+      },
+      "full_pipeline": {
+        "stage": "Full Pipeline (Stages 1-4)",
+        "country": {
+          "name": "US",
+          "score": 0.9816679410748916,
+          "iso_code": "USA"
+        },
+        "town": {
+          "name": "WASHINGTON",
+          "score": 0.9787796375770129,
+          "matched_text": "WASHINGTON"
+        },
+        "postcode": {
+          "code": "20500",
+          "town": "E",
+          "country": "S"
+        },
+        "all_country_matches": 7,
+        "all_town_matches": 7
+      },
+      "improvements": {
+        "stage1_country_raw": [
+          "USA"
+        ],
+        "final_country": "US",
+        "stage1_town_raw": [
+          "WASHINGTON, DC"
+        ],
+        "final_town": "WASHINGTON",
+        "final_town_score": 0.9787796375770129,
+        "final_country_score": 0.9816679410748916,
+        "postcode_detected": true,
+        "candidate_countries": 7,
+        "candidate_towns": 7,
+        "benefits": [
+          "\u2713 Raw CRF predictions validated and normalized",
+          "\u2713 7 country candidates fuzzy-matched and scored",
+          "\u2713 7 town candidates fuzzy-matched and scored",
+          "\u2713 Postcode matching applied (validates country-town relationship)",
+          "\u2713 Final scoring synthesizes CRF confidence + fuzzy match quality + postcode validation",
+          "\u2713 Country confidence: 98.2%",
+          "\u2713 Town confidence: 97.9%",
+          "\u2713 Postal code validated: 20500 for E, S"
+        ]
+      }
+    },
+    {
+      "address": "10 Downing Street\nLondon, SW1A 2AA\nUK",
+      "stage_1_only": {
+        "stage": "CRF Only (Stage 1)",
+        "predictions": {
+          "INTEGER": [
+            {
+              "text": "10",
+              "confidence": 0.9847730994224548,
+              "span": [
+                0,
+                2
+              ]
+            }
+          ],
+          "SEPARATOR": [
+            {
+              "text": ", ",
+              "confidence": 0.9902610778808594,
+              "span": [
+                24,
+                26
+              ]
+            },
+            {
+              "text": " ",
+              "confidence": 0.9919834733009338,
+              "span": [
+                2,
+                3
+              ]
+            },
+            {
+              "text": "\n",
+              "confidence": 0.9972169399261475,
+              "span": [
+                17,
+                18
+              ]
+            },
+            {
+              "text": "\n",
+              "confidence": 0.9923533797264099,
+              "span": [
+                34,
+                35
+              ]
+            }
+          ],
+          "STREET": [
+            {
+              "text": "DOWNING STREET",
+              "confidence": 0.9947312474250793,
+              "span": [
+                3,
+                17
+              ]
+            }
+          ],
+          "TOWN": [
+            {
+              "text": "LONDON",
+              "confidence": 0.9856593012809753,
+              "span": [
+                18,
+                24
+              ]
+            }
+          ],
+          "POSTAL_CODE": [
+            {
+              "text": "SW1A 2AA",
+              "confidence": 0.5898027420043945,
+              "span": [
+                26,
+                34
+              ]
+            }
+          ],
+          "COUNTRY": [
+            {
+              "text": "UK",
+              "confidence": 0.9795116186141968,
+              "span": [
+                35,
+                37
+              ]
+            }
+          ],
+          "OTHER": [],
+          "CONTINENT": [],
+          "GENERIC_WORD": [],
+          "NATURAL_PERSON_NAME": [],
+          "FINANCIAL_INSTITUTION": [],
+          "BUSINESS_ENTITY_NAME": [],
+          "BUSINESS_ENTITY_TYPE": [],
+          "MONTH": [],
+          "YEAR": [],
+          "IBAN": [],
+          "FLOAT": [],
+          "ALPHANUMERIC": [],
+          "CURRENCY": [],
+          "FINANCIAL_JARGON": [],
+          "HOUSE_NUMBER": [],
+          "DATE": [],
+          "SPECIFIER": [],
+          "PHONE_NUMBER": []
+        },
+        "raw_output": {
+          "COUNTRY_predictions": [
+            "UK"
+          ],
+          "TOWN_predictions": [
+            "LONDON"
+          ],
+          "POSTAL_CODE_predictions": [
+            "SW1A 2AA"
+          ]
+        }
+      },
+      "full_pipeline": {
+        "stage": "Full Pipeline (Stages 1-4)",
+        "country": {
+          "name": "GB",
+          "score": 0.9718733536155606,
+          "iso_code": "UK"
+        },
+        "town": {
+          "name": "LONDON",
+          "score": 0.9761103714088566,
+          "matched_text": "LONDON"
+        },
+        "postcode": {
+          "code": "W1A 2AA",
+          "town": "G",
+          "country": "B"
+        },
+        "all_country_matches": 5,
+        "all_town_matches": 5
+      },
+      "improvements": {
+        "stage1_country_raw": [
+          "UK"
+        ],
+        "final_country": "GB",
+        "stage1_town_raw": [
+          "LONDON"
+        ],
+        "final_town": "LONDON",
+        "final_town_score": 0.9761103714088566,
+        "final_country_score": 0.9718733536155606,
+        "postcode_detected": true,
+        "candidate_countries": 5,
+        "candidate_towns": 5,
+        "benefits": [
+          "\u2713 Raw CRF predictions validated and normalized",
+          "\u2713 5 country candidates fuzzy-matched and scored",
+          "\u2713 5 town candidates fuzzy-matched and scored",
+          "\u2713 Postcode matching applied (validates country-town relationship)",
+          "\u2713 Final scoring synthesizes CRF confidence + fuzzy match quality + postcode validation",
+          "\u2713 Country confidence: 97.2%",
+          "\u2713 Town confidence: 97.6%",
+          "\u2713 Postal code validated: W1A 2AA for G, B"
+        ]
+      }
+    },
+    {
+      "address": "Eiffel Tower\nChamp de Mars, 5 Avenue Anatole\nParis, France",
+      "stage_1_only": {
+        "stage": "CRF Only (Stage 1)",
+        "predictions": {
+          "GENERIC_WORD": [
+            {
+              "text": "EIFFEL",
+              "confidence": 0.6879115700721741,
+              "span": [
+                0,
+                6
+              ]
+            }
+          ],
+          "SEPARATOR": [
+            {
+              "text": ", ",
+              "confidence": 0.9853072166442871,
+              "span": [
+                50,
+                52
+              ]
+            },
+            {
+              "text": ", ",
+              "confidence": 0.9840002059936523,
+              "span": [
+                26,
+                28
+              ]
+            },
+            {
+              "text": "\n",
+              "confidence": 0.9871562719345093,
+              "span": [
+                12,
+                13
+              ]
+            },
+            {
+              "text": "\n",
+              "confidence": 0.9923834800720215,
+              "span": [
+                44,
+                45
+              ]
+            },
+            {
+              "text": " ",
+              "confidence": 0.7156718969345093,
+              "span": [
+                6,
+                7
+              ]
+            },
+            {
+              "text": " ",
+              "confidence": 0.9924636483192444,
+              "span": [
+                29,
+                30
+              ]
+            }
+          ],
+          "NATURAL_PERSON_NAME": [
+            {
+              "text": "TOWER",
+              "confidence": 0.7051476240158081,
+              "span": [
+                7,
+                12
+              ]
+            }
+          ],
+          "TOWN": [
+            {
+              "text": "PARIS",
+              "confidence": 0.9287409782409668,
+              "span": [
+                45,
+                50
+              ]
+            },
+            {
+              "text": "CHAMP DE MARS",
+              "confidence": 0.4534914195537567,
+              "span": [
+                13,
+                26
+              ]
+            }
+          ],
+          "HOUSE_NUMBER": [
+            {
+              "text": "5",
+              "confidence": 0.9807296395301819,
+              "span": [
+                28,
+                29
+              ]
+            }
+          ],
+          "STREET": [
+            {
+              "text": "AVENUE ANATOLE",
+              "confidence": 0.9842433929443359,
+              "span": [
+                30,
+                44
+              ]
+            }
+          ],
+          "COUNTRY": [
+            {
+              "text": "FRANCE",
+              "confidence": 0.991122305393219,
+              "span": [
+                52,
+                58
+              ]
+            }
+          ],
+          "OTHER": [],
+          "POSTAL_CODE": [],
+          "CONTINENT": [],
+          "FINANCIAL_INSTITUTION": [],
+          "BUSINESS_ENTITY_NAME": [],
+          "BUSINESS_ENTITY_TYPE": [],
+          "MONTH": [],
+          "YEAR": [],
+          "IBAN": [],
+          "FLOAT": [],
+          "INTEGER": [],
+          "ALPHANUMERIC": [],
+          "CURRENCY": [],
+          "FINANCIAL_JARGON": [],
+          "DATE": [],
+          "SPECIFIER": [],
+          "PHONE_NUMBER": []
+        },
+        "raw_output": {
+          "COUNTRY_predictions": [
+            "FRANCE"
+          ],
+          "TOWN_predictions": [
+            "PARIS",
+            "CHAMP DE MARS"
+          ],
+          "POSTAL_CODE_predictions": []
+        }
+      },
+      "full_pipeline": {
+        "stage": "Full Pipeline (Stages 1-4)",
+        "country": {
+          "name": "FR",
+          "score": 0.9816873224993575,
+          "iso_code": "FRANCE"
+        },
+        "town": {
+          "name": "PARIS",
+          "score": 0.9849091352001067,
+          "matched_text": "PARIS"
+        },
+        "postcode": null,
+        "all_country_matches": 13,
+        "all_town_matches": 13
+      },
+      "improvements": {
+        "stage1_country_raw": [
+          "FRANCE"
+        ],
+        "final_country": "FR",
+        "stage1_town_raw": [
+          "PARIS",
+          "CHAMP DE MARS"
+        ],
+        "final_town": "PARIS",
+        "final_town_score": 0.9849091352001067,
+        "final_country_score": 0.9816873224993575,
+        "postcode_detected": false,
+        "candidate_countries": 13,
+        "candidate_towns": 13,
+        "benefits": [
+          "\u2713 Raw CRF predictions validated and normalized",
+          "\u2713 13 country candidates fuzzy-matched and scored",
+          "\u2713 13 town candidates fuzzy-matched and scored",
+          "\u2713 Postcode matching applied (validates country-town relationship)",
+          "\u2713 Final scoring synthesizes CRF confidence + fuzzy match quality + postcode validation",
+          "\u2713 Country confidence: 98.2%",
+          "\u2713 Town confidence: 98.5%"
+        ]
+      }
+    },
+    {
+      "address": "Statue of Liberty\nNew York Harbor\nNew York, NY 10004\nUSA",
+      "stage_1_only": {
+        "stage": "CRF Only (Stage 1)",
+        "predictions": {
+          "GENERIC_WORD": [
+            {
+              "text": "STATUE",
+              "confidence": 0.9303815364837646,
+              "span": [
+                0,
+                6
+              ]
+            },
+            {
+              "text": "NY",
+              "confidence": 0.37854522466659546,
+              "span": [
+                44,
+                46
+              ]
+            },
+            {
+              "text": "LIBERTY",
+              "confidence": 0.7742859721183777,
+              "span": [
+                10,
+                17
+              ]
+            }
+          ],
+          "SEPARATOR": [
+            {
+              "text": " ",
+              "confidence": 0.9772735238075256,
+              "span": [
+                6,
+                7
+              ]
+            },
+            {
+              "text": " ",
+              "confidence": 0.9906458854675293,
+              "span": [
+                46,
+                47
+              ]
+            },
+            {
+              "text": ", ",
+              "confidence": 0.9820307493209839,
+              "span": [
+                42,
+                44
+              ]
+            },
+            {
+              "text": "\n",
+              "confidence": 0.9939204454421997,
+              "span": [
+                17,
+                18
+              ]
+            },
+            {
+              "text": "\n",
+              "confidence": 0.9967138171195984,
+              "span": [
+                52,
+                53
+              ]
+            },
+            {
+              "text": "\n",
+              "confidence": 0.9940424561500549,
+              "span": [
+                33,
+                34
+              ]
+            }
+          ],
+          "TOWN": [
+            {
+              "text": "NEW YORK ",
+              "confidence": 0.608809232711792,
+              "span": [
+                18,
+                27
+              ]
+            },
+            {
+              "text": "OF ",
+              "confidence": 0.495063453912735,
+              "span": [
+                7,
+                10
+              ]
+            },
+            {
+              "text": "NEW YORK",
+              "confidence": 0.9741866588592529,
+              "span": [
+                34,
+                42
+              ]
+            }
+          ],
+          "NATURAL_PERSON_NAME": [
+            {
+              "text": "HARBOR",
+              "confidence": 0.391539603471756,
+              "span": [
+                27,
+                33
+              ]
+            }
+          ],
+          "POSTAL_CODE": [
+            {
+              "text": "10004",
+              "confidence": 0.9389716982841492,
+              "span": [
+                47,
+                52
+              ]
+            }
+          ],
+          "COUNTRY": [
+            {
+              "text": "USA",
+              "confidence": 0.9902262091636658,
+              "span": [
+                53,
+                56
+              ]
+            }
+          ],
+          "OTHER": [],
+          "STREET": [],
+          "CONTINENT": [],
+          "FINANCIAL_INSTITUTION": [],
+          "BUSINESS_ENTITY_NAME": [],
+          "BUSINESS_ENTITY_TYPE": [],
+          "MONTH": [],
+          "YEAR": [],
+          "IBAN": [],
+          "FLOAT": [],
+          "INTEGER": [],
+          "ALPHANUMERIC": [],
+          "CURRENCY": [],
+          "FINANCIAL_JARGON": [],
+          "HOUSE_NUMBER": [],
+          "DATE": [],
+          "SPECIFIER": [],
+          "PHONE_NUMBER": []
+        },
+        "raw_output": {
+          "COUNTRY_predictions": [
+            "USA"
+          ],
+          "TOWN_predictions": [
+            "NEW YORK ",
+            "OF ",
+            "NEW YORK"
+          ],
+          "POSTAL_CODE_predictions": [
+            "10004"
+          ]
+        }
+      },
+      "full_pipeline": {
+        "stage": "Full Pipeline (Stages 1-4)",
+        "country": {
+          "name": "US",
+          "score": 0.9817044720884524,
+          "iso_code": "USA"
+        },
+        "town": {
+          "name": "NEW YORK",
+          "score": 0.983717767649464,
+          "matched_text": "NEW YORK"
+        },
+        "postcode": {
+          "code": "10004",
+          "town": "U",
+          "country": "S"
+        },
+        "all_country_matches": 15,
+        "all_town_matches": 15
+      },
+      "improvements": {
+        "stage1_country_raw": [
+          "USA"
+        ],
+        "final_country": "US",
+        "stage1_town_raw": [
+          "NEW YORK ",
+          "OF ",
+          "NEW YORK"
+        ],
+        "final_town": "NEW YORK",
+        "final_town_score": 0.983717767649464,
+        "final_country_score": 0.9817044720884524,
+        "postcode_detected": true,
+        "candidate_countries": 15,
+        "candidate_towns": 15,
+        "benefits": [
+          "\u2713 Raw CRF predictions validated and normalized",
+          "\u2713 15 country candidates fuzzy-matched and scored",
+          "\u2713 15 town candidates fuzzy-matched and scored",
+          "\u2713 Postcode matching applied (validates country-town relationship)",
+          "\u2713 Final scoring synthesizes CRF confidence + fuzzy match quality + postcode validation",
+          "\u2713 Country confidence: 98.2%",
+          "\u2713 Town confidence: 98.4%",
+          "\u2713 Postal code validated: 10004 for U, S"
+        ]
+      }
+    },
+    {
+      "address": "Big Ben\nWestminster, London\nSW1A 0AA\nUK",
+      "stage_1_only": {
+        "stage": "CRF Only (Stage 1)",
+        "predictions": {
+          "GENERIC_WORD": [
+            {
+              "text": "BIG",
+              "confidence": 0.7344633936882019,
+              "span": [
+                0,
+                3
+              ]
+            }
+          ],
+          "SEPARATOR": [
+            {
+              "text": "\n",
+              "confidence": 0.9675795435905457,
+              "span": [
+                27,
+                28
+              ]
+            },
+            {
+              "text": "\n",
+              "confidence": 0.9892136454582214,
+              "span": [
+                7,
+                8
+              ]
+            },
+            {
+              "text": " ",
+              "confidence": 0.9231308698654175,
+              "span": [
+                3,
+                4
+              ]
+            },
+            {
+              "text": " ",
+              "confidence": 0.9784348011016846,
+              "span": [
+                20,
+                21
+              ]
+            },
+            {
+              "text": "\n",
+              "confidence": 0.9855982065200806,
+              "span": [
+                36,
+                37
+              ]
+            }
+          ],
+          "NATURAL_PERSON_NAME": [
+            {
+              "text": "BEN",
+              "confidence": 0.5709086060523987,
+              "span": [
+                4,
+                7
+              ]
+            }
+          ],
+          "TOWN": [
+            {
+              "text": "LONDON",
+              "confidence": 0.986470639705658,
+              "span": [
+                21,
+                27
+              ]
+            },
+            {
+              "text": "WESTMINSTER,",
+              "confidence": 0.8780387043952942,
+              "span": [
+                8,
+                20
+              ]
+            }
+          ],
+          "POSTAL_CODE": [
+            {
+              "text": "SW1A 0AA",
+              "confidence": 0.944982647895813,
+              "span": [
+                28,
+                36
+              ]
+            }
+          ],
+          "COUNTRY": [
+            {
+              "text": "UK",
+              "confidence": 0.9820600748062134,
+              "span": [
+                37,
+                39
+              ]
+            }
+          ],
+          "OTHER": [],
+          "STREET": [],
+          "CONTINENT": [],
+          "FINANCIAL_INSTITUTION": [],
+          "BUSINESS_ENTITY_NAME": [],
+          "BUSINESS_ENTITY_TYPE": [],
+          "MONTH": [],
+          "YEAR": [],
+          "IBAN": [],
+          "FLOAT": [],
+          "INTEGER": [],
+          "ALPHANUMERIC": [],
+          "CURRENCY": [],
+          "FINANCIAL_JARGON": [],
+          "HOUSE_NUMBER": [],
+          "DATE": [],
+          "SPECIFIER": [],
+          "PHONE_NUMBER": []
+        },
+        "raw_output": {
+          "COUNTRY_predictions": [
+            "UK"
+          ],
+          "TOWN_predictions": [
+            "LONDON",
+            "WESTMINSTER,"
+          ],
+          "POSTAL_CODE_predictions": [
+            "SW1A 0AA"
+          ]
+        }
+      },
+      "full_pipeline": {
+        "stage": "Full Pipeline (Stages 1-4)",
+        "country": {
+          "name": "GB",
+          "score": 0.9718043038521345,
+          "iso_code": "UK"
+        },
+        "town": {
+          "name": "LONDON",
+          "score": 0.9760933379097535,
+          "matched_text": "LONDON"
+        },
+        "postcode": {
+          "code": "SW1A 0AA",
+          "town": "G",
+          "country": "B"
+        },
+        "all_country_matches": 9,
+        "all_town_matches": 9
+      },
+      "improvements": {
+        "stage1_country_raw": [
+          "UK"
+        ],
+        "final_country": "GB",
+        "stage1_town_raw": [
+          "LONDON",
+          "WESTMINSTER,"
+        ],
+        "final_town": "LONDON",
+        "final_town_score": 0.9760933379097535,
+        "final_country_score": 0.9718043038521345,
+        "postcode_detected": true,
+        "candidate_countries": 9,
+        "candidate_towns": 9,
+        "benefits": [
+          "\u2713 Raw CRF predictions validated and normalized",
+          "\u2713 9 country candidates fuzzy-matched and scored",
+          "\u2713 9 town candidates fuzzy-matched and scored",
+          "\u2713 Postcode matching applied (validates country-town relationship)",
+          "\u2713 Final scoring synthesizes CRF confidence + fuzzy match quality + postcode validation",
+          "\u2713 Country confidence: 97.2%",
+          "\u2713 Town confidence: 97.6%",
+          "\u2713 Postal code validated: SW1A 0AA for G, B"
+        ]
+      }
+    },
+    {
+      "address": "Casa Vicens\nGaud\u00ed\nBarcelona, Spain",
+      "stage_1_only": {
+        "stage": "CRF Only (Stage 1)",
+        "predictions": {
+          "NATURAL_PERSON_NAME": [
+            {
+              "text": "CASA VICENS",
+              "confidence": 0.6290247440338135,
+              "span": [
+                0,
+                11
+              ]
+            }
+          ],
+          "SEPARATOR": [
+            {
+              "text": "\n",
+              "confidence": 0.9866151213645935,
+              "span": [
+                11,
+                12
+              ]
+            },
+            {
+              "text": "\n",
+              "confidence": 0.9902977347373962,
+              "span": [
+                17,
+                18
+              ]
+            },
+            {
+              "text": ", ",
+              "confidence": 0.9806633591651917,
+              "span": [
+                27,
+                29
+              ]
+            }
+          ],
+          "TOWN": [
+            {
+              "text": "GAUDI",
+              "confidence": 0.5366643667221069,
+              "span": [
+                12,
+                17
+              ]
+            },
+            {
+              "text": "BARCELONA",
+              "confidence": 0.9801663160324097,
+              "span": [
+                18,
+                27
+              ]
+            }
+          ],
+          "COUNTRY": [
+            {
+              "text": "SPAIN",
+              "confidence": 0.9791258573532104,
+              "span": [
+                29,
+                34
+              ]
+            }
+          ],
+          "OTHER": [],
+          "STREET": [],
+          "POSTAL_CODE": [],
+          "CONTINENT": [],
+          "GENERIC_WORD": [],
+          "FINANCIAL_INSTITUTION": [],
+          "BUSINESS_ENTITY_NAME": [],
+          "BUSINESS_ENTITY_TYPE": [],
+          "MONTH": [],
+          "YEAR": [],
+          "IBAN": [],
+          "FLOAT": [],
+          "INTEGER": [],
+          "ALPHANUMERIC": [],
+          "CURRENCY": [],
+          "FINANCIAL_JARGON": [],
+          "HOUSE_NUMBER": [],
+          "DATE": [],
+          "SPECIFIER": [],
+          "PHONE_NUMBER": []
+        },
+        "raw_output": {
+          "COUNTRY_predictions": [
+            "SPAIN"
+          ],
+          "TOWN_predictions": [
+            "GAUDI",
+            "BARCELONA"
+          ],
+          "POSTAL_CODE_predictions": []
+        }
+      },
+      "full_pipeline": {
+        "stage": "Full Pipeline (Stages 1-4)",
+        "country": {
+          "name": "ES",
+          "score": 0.9819155979139517,
+          "iso_code": "SPAIN"
+        },
+        "town": {
+          "name": "BARCELONA",
+          "score": 0.9836096676954864,
+          "matched_text": "BARCELONA"
+        },
+        "postcode": null,
+        "all_country_matches": 8,
+        "all_town_matches": 8
+      },
+      "improvements": {
+        "stage1_country_raw": [
+          "SPAIN"
+        ],
+        "final_country": "ES",
+        "stage1_town_raw": [
+          "GAUDI",
+          "BARCELONA"
+        ],
+        "final_town": "BARCELONA",
+        "final_town_score": 0.9836096676954864,
+        "final_country_score": 0.9819155979139517,
+        "postcode_detected": false,
+        "candidate_countries": 8,
+        "candidate_towns": 8,
+        "benefits": [
+          "\u2713 Raw CRF predictions validated and normalized",
+          "\u2713 8 country candidates fuzzy-matched and scored",
+          "\u2713 8 town candidates fuzzy-matched and scored",
+          "\u2713 Postcode matching applied (validates country-town relationship)",
+          "\u2713 Final scoring synthesizes CRF confidence + fuzzy match quality + postcode validation",
+          "\u2713 Country confidence: 98.2%",
+          "\u2713 Town confidence: 98.4%"
+        ]
+      }
+    },
+    {
+      "address": "Colosseum\nRome\nItaly",
+      "stage_1_only": {
+        "stage": "CRF Only (Stage 1)",
+        "predictions": {
+          "GENERIC_WORD": [
+            {
+              "text": "COLOSSEUM",
+              "confidence": 0.9552983045578003,
+              "span": [
+                0,
+                9
+              ]
+            }
+          ],
+          "SEPARATOR": [
+            {
+              "text": "\n",
+              "confidence": 0.9831206798553467,
+              "span": [
+                14,
+                15
+              ]
+            },
+            {
+              "text": "\n",
+              "confidence": 0.9426838159561157,
+              "span": [
+                9,
+                10
+              ]
+            }
+          ],
+          "TOWN": [
+            {
+              "text": "ROME",
+              "confidence": 0.6818656921386719,
+              "span": [
+                10,
+                14
+              ]
+            }
+          ],
+          "COUNTRY": [
+            {
+              "text": "ITALY",
+              "confidence": 0.9877387285232544,
+              "span": [
+                15,
+                20
+              ]
+            }
+          ],
+          "OTHER": [],
+          "STREET": [],
+          "POSTAL_CODE": [],
+          "CONTINENT": [],
+          "NATURAL_PERSON_NAME": [],
+          "FINANCIAL_INSTITUTION": [],
+          "BUSINESS_ENTITY_NAME": [],
+          "BUSINESS_ENTITY_TYPE": [],
+          "MONTH": [],
+          "YEAR": [],
+          "IBAN": [],
+          "FLOAT": [],
+          "INTEGER": [],
+          "ALPHANUMERIC": [],
+          "CURRENCY": [],
+          "FINANCIAL_JARGON": [],
+          "HOUSE_NUMBER": [],
+          "DATE": [],
+          "SPECIFIER": [],
+          "PHONE_NUMBER": []
+        },
+        "raw_output": {
+          "COUNTRY_predictions": [
+            "ITALY"
+          ],
+          "TOWN_predictions": [
+            "ROME"
+          ],
+          "POSTAL_CODE_predictions": []
+        }
+      },
+      "full_pipeline": {
+        "stage": "Full Pipeline (Stages 1-4)",
+        "country": {
+          "name": "IT",
+          "score": 0.976648001142853,
+          "iso_code": "ITALY"
+        },
+        "town": {
+          "name": "ROME",
+          "score": 0.9586764183497306,
+          "matched_text": "ROME"
+        },
+        "postcode": null,
+        "all_country_matches": 7,
+        "all_town_matches": 7
+      },
+      "improvements": {
+        "stage1_country_raw": [
+          "ITALY"
+        ],
+        "final_country": "IT",
+        "stage1_town_raw": [
+          "ROME"
+        ],
+        "final_town": "ROME",
+        "final_town_score": 0.9586764183497306,
+        "final_country_score": 0.976648001142853,
+        "postcode_detected": false,
+        "candidate_countries": 7,
+        "candidate_towns": 7,
+        "benefits": [
+          "\u2713 Raw CRF predictions validated and normalized",
+          "\u2713 7 country candidates fuzzy-matched and scored",
+          "\u2713 7 town candidates fuzzy-matched and scored",
+          "\u2713 Postcode matching applied (validates country-town relationship)",
+          "\u2713 Final scoring synthesizes CRF confidence + fuzzy match quality + postcode validation",
+          "\u2713 Country confidence: 97.7%",
+          "\u2713 Town confidence: 95.9%"
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "total_addresses": 7,
+    "postcodes_detected": 4,
+    "postcode_detection_rate": "57.1%",
+    "average_country_confidence": "97.8%",
+    "average_town_confidence": "97.7%",
+    "average_total_candidates_per_address": "18",
+    "key_findings": [
+      "Stage 1 (CRF) provides raw entity extraction from character-level tagging",
+      "Stages 2-4 validate and disambiguate those extractions against reference data",
+      "Fuzzy matching handles typos and variations in addresses",
+      "Postcode matching validates country-town relationships and adds additional data",
+      "Final scoring produces interpretable confidence scores (0-1 range)",
+      "Average confidence achieved: Country=97.8%, Town=97.7%"
+    ]
+  }
+}

@@ -77,18 +77,49 @@ class PostalCodeMatch(BaseModel):
     country: Optional[str] = Field(None, description="Country associated with the postal code")
 
 
+class AddressStructureResult(BaseModel):
+    """Result for a single address."""
+    address: str
+    country: 'CountryMatch'
+    town: 'TownMatch'
+    postal_code: Optional[PostalCodeMatch] = Field(None, description="Postal code/ZIP code if detected")
+
+
 class SingleAddressRequest(BaseModel):
-    """Request model for single address structuring."""
-    address: str = Field(..., description="Postal address string", min_length=1)
+    """Request model for address structuring - accepts single string or array of strings."""
+    address: Optional[str | List[str]] = Field(None, description="Single postal address string OR array of address strings")
+    addresses: Optional[List[str]] = Field(None, description="Array of postal address strings (alternative to address)")
+    
+    def get_addresses(self) -> List[str]:
+        """Extract addresses from either field, handling both formats."""
+        # Handle addresses field (preferred)
+        if self.addresses is not None:
+            if not self.addresses:
+                raise ValueError("addresses array cannot be empty")
+            return self.addresses
+        
+        # Handle address field (can be string or array for flexibility)
+        elif self.address is not None:
+            if isinstance(self.address, list):
+                if not self.address:
+                    raise ValueError("address array cannot be empty")
+                return self.address
+            else:
+                return [self.address]
+        else:
+            raise ValueError("Either 'address' (string or array) or 'addresses' (array) must be provided")
 
 
 class SingleAddressResponse(BaseModel):
-    """Response model for single address structuring."""
+    """Response model for address structuring - returns single result or array of results."""
     success: bool
-    address: str
-    country: CountryMatch
-    town: TownMatch
+    # For backward compatibility, include single address fields
+    address: Optional[str] = None
+    country: Optional[CountryMatch] = None
+    town: Optional[TownMatch] = None
     postal_code: Optional[PostalCodeMatch] = Field(None, description="Postal code/ZIP code if detected")
+    # For array input, include results array
+    results: Optional[List[AddressStructureResult]] = Field(None, description="Array of results when multiple addresses provided")
 
 
 class BatchAddressRequest(BaseModel):
@@ -134,29 +165,38 @@ async def health_check():
 @app.post("/api/structure-address", response_model=SingleAddressResponse)
 async def structure_address(request: SingleAddressRequest):
     """
-    Structure a single postal address and return country and town.
+    Structure postal addresses and return country and town.
+    
+    Supports two input formats:
+    1. Single address (legacy): {"address": "1600 Pennsylvania Ave NW..."}
+    2. Multiple addresses (new): {"addresses": ["address1", "address2", ...]}
     
     Args:
-        request: SingleAddressRequest containing the address string
+        request: SingleAddressRequest containing either address (str) or addresses (list)
         
     Returns:
-        SingleAddressResponse: Structured address with country and town matches
+        SingleAddressResponse: 
+        - For single address: {success, address, country, town, postal_code}
+        - For multiple: {success, results: [{address, country, town, postal_code}, ...]}
         
     Raises:
         HTTPException: If address processing fails
     """
     
     try:
-        address = request.address.strip()
-        
-        if not address:
+        # Extract addresses using the helper method
+        try:
+            addresses = request.get_addresses()
+        except ValueError as e:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Address cannot be empty"
+                detail=str(e)
             )
         
-        # Create DataFrame with the address
-        df = pl.DataFrame({"addresses": [address]})
+        is_single = len(addresses) == 1 and request.address is not None
+        
+        # Create DataFrame with addresses
+        df = pl.DataFrame({"addresses": addresses})
         
         # Run through pipeline
         results = pipeline.run(
@@ -170,44 +210,63 @@ async def structure_address(request: SingleAddressRequest):
                 detail="No results returned from pipeline"
             )
         
-        result = results[0]
-        
-        # Extract country
-        country_name, country_confidence, country_iso = result.i_th_best_match_country(
-            0, value_if_none="UNKNOWN"
-        )
-        
-        # Extract town
-        town_name, town_confidence, _ = result.i_th_best_match_town(
-            0, value_if_none="UNKNOWN"
-        )
-        
-        # Extract postal code if available
-        postal_code_match = None
-        if hasattr(result, 'postcode_matches') and result.postcode_matches:
-            for postcode_match in result.postcode_matches:
-                postal_code_match = PostalCodeMatch(
-                    code=postcode_match.matched,
-                    town=postcode_match.possibility,
-                    country=postcode_match.origin
+        # Process results
+        structured_results = []
+        for i, result in enumerate(results):
+            # Extract country
+            country_name, country_confidence, country_iso = result.i_th_best_match_country(
+                0, value_if_none="UNKNOWN"
+            )
+            
+            # Extract town
+            town_name, town_confidence, _ = result.i_th_best_match_town(
+                0, value_if_none="UNKNOWN"
+            )
+            
+            # Extract postal code if available
+            postal_code_match = None
+            if hasattr(result, 'postcode_matches') and result.postcode_matches:
+                for postcode_match in result.postcode_matches:
+                    postal_code_match = PostalCodeMatch(
+                        code=postcode_match.matched,
+                        town=postcode_match.possibility,
+                        country=postcode_match.origin
+                    )
+                    break  # Get first match
+            
+            structured_results.append(
+                AddressStructureResult(
+                    address=addresses[i],
+                    country=CountryMatch(
+                        name=country_name,
+                        confidence=float(country_confidence) if country_confidence else None,
+                        iso_code=country_iso
+                    ),
+                    town=TownMatch(
+                        name=town_name,
+                        confidence=float(town_confidence) if town_confidence else None
+                    ),
+                    postal_code=postal_code_match
                 )
-                break  # Get first match
+            )
         
-        # Build response
-        return SingleAddressResponse(
-            success=True,
-            address=address,
-            country=CountryMatch(
-                name=country_name,
-                confidence=float(country_confidence) if country_confidence else None,
-                iso_code=country_iso
-            ),
-            town=TownMatch(
-                name=town_name,
-                confidence=float(town_confidence) if town_confidence else None
-            ),
-            postal_code=postal_code_match
-        )
+        # Return response based on input format
+        if is_single:
+            # Legacy single address format
+            result = structured_results[0]
+            return SingleAddressResponse(
+                success=True,
+                address=result.address,
+                country=result.country,
+                town=result.town,
+                postal_code=result.postal_code
+            )
+        else:
+            # New array format
+            return SingleAddressResponse(
+                success=True,
+                results=structured_results
+            )
     
     except HTTPException:
         raise
